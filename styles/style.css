@@ -1,4 +1,13 @@
-.backend{
-    background-image: url();
+.index{
+    background-image: url("./index.webp");
+}
+.form{
     text-align: center;
+    background-image: url("./write.jfif");
+}
+.LoginAdmin{
+    background-image: url("./Login.webp");
+}
+.SignUp{
+    background-image: url("./SignUp.jfif");
 }

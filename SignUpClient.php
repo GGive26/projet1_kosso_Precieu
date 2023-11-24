@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoginClient</title>
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
-<body>
+<body class="SignUp">
     <h1> Bienvenue</h1>
 
 
-    <form method="post" action="">
+    <form method="post" action="" class="form">
 
 <fieldset>
     <legend>
@@ -30,7 +31,7 @@
                 <label for="password">Password : </label>
                 <input type="text" id="password" name="pwd"><br><br>
 </fieldset>
-<input type="submit" value="Confirmrer"><br>
+<input type="submit" value="Confirmrer">
 <button><a href="">Annuler</a></button>
 </form>
 </body>
