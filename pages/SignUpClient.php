@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoginClient</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body class="SignUp">
     <h1> Bienvenue</h1>
@@ -32,7 +32,7 @@
                 <input type="text" id="password" name="pwd"><br><br>
 </fieldset>
 <input type="submit" value="Confirmrer">
-<button><a href="">Annuler</a></button>
+<button><a href="../index.php">Annuler</a></button>
 </form>
 </body>
 </html>

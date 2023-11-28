@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuthentificationAdministrateur</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body class="LoginAdmin">
     <h1>Entrez vos identifiants Administrateur</h1>
@@ -23,7 +23,8 @@
 
 
     </fieldset>
-
+    <input type="submit" value="Confirmrer">
+<button><a href="../index.php">Annuler</a></button>
     </form>
     
 </body>

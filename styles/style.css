@@ -11,3 +11,7 @@
 .SignUp{
     background-image: url("./SignUp.jfif");
 }
+.error{
+    color: red;
+    font-size: small;
+}

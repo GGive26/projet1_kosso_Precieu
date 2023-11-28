@@ -16,8 +16,8 @@
                 AUTHENTIFICATION
             </legend>
 
-            <button><a href="./LoginAdmin.php">Login</a></button><br><br>
-            <button><a href="./SignUpClient.php">SignUp</a></button>
+            <button><a href="./pages/LoginAdmin.php">Login</a></button><br><br>
+            <button><a href="./pages/SignUpClient.php">SignUp</a></button>
     </fieldset>
   </form>
 </body>
