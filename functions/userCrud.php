@@ -1,23 +1,25 @@
 <?php
 
-/**
- * Create user 
- * 
- */
 function createUser(array $data)
 {
     global $conn;
     
-    $query = "INSERT INTO user VALUES (NULL, ?, ?, ?)";
+    $query = "INSERT INTO user VALUES (NULL,?,?,?,?,?,?,?,?,?)";
 
     if ($stmt = mysqli_prepare($conn, $query)) {
         
         mysqli_stmt_bind_param(
             $stmt,
-            "sss",
+            "sssssiis",
             $data['user_name'],
             $data['email'],
-            $data['pwd']
+            $data['pwd'],
+            $data['fname'],
+            $data['lname'],
+            $data['billing_adress_id'],
+            $data['shipping_adress_id'],
+            $data['token'],
+            $data['role_id'],
         );
 
         /* Exécution de la requête */
@@ -61,6 +63,30 @@ function getUserByUsername(string $user_name)
     global $conn;
 
     $query = "SELECT * FROM user WHERE user.user_name = '" . $user_name . "';";
+
+    $result = mysqli_query($conn, $query);
+
+    // avec fetch row : tableau indexé
+    $data = mysqli_fetch_assoc($result);
+    return $data;
+}
+function getUserBylname(string $lname)
+{
+    global $conn;
+
+    $query = "SELECT * FROM user WHERE user.lname = '" . $lname . "';";
+
+    $result = mysqli_query($conn, $query);
+
+    // avec fetch row : tableau indexé
+    $data = mysqli_fetch_assoc($result);
+    return $data;
+}
+function getUserByfname(string $fname)
+{
+    global $conn;
+
+    $query = "SELECT * FROM user WHERE user.fname = '" . $fname . "';";
 
     $result = mysqli_query($conn, $query);
 

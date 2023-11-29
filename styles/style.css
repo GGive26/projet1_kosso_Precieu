@@ -1,17 +1,17 @@
-.index{
-    background-image: url("./index.webp");
+.index {
+  background-image: url("./creation-site-e-commerce.jpeg");
 }
-.form{
-    text-align: center;
-    background-image: url("./write.jfif");
+.form {
+  text-align: center;
+  background-image: url("./write.jfif");
 }
-.LoginAdmin{
-    background-image: url("./Login.webp");
+.LoginAdmin {
+  background-image: url("./Login.webp");
 }
-.SignUp{
-    background-image: url("./SignUp.jfif");
+.SignUp {
+  background-image: url("./SignUp.jfif");
 }
-.error{
-    color: red;
-    font-size: small;
+.error {
+  color: red;
+  font-size: 0.8rem;
 }

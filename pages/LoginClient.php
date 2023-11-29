@@ -9,7 +9,7 @@
 <body class="LoginAdmin">
     <h1>Entrez vos identifiants Administrateur</h1>
 
-    <form class="form">
+    <form class="form" action="../results/LoginResult.php" method="post">
 
     <fieldset>
         <legend>

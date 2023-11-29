@@ -1,22 +1,21 @@
 <?php
 
-function usernameIsValid(string $username): array
+function usernameIsValid(string $user_name): array
 {
     $result = [
         'isValid' => true,
         'msg' => ''
-
     ];
 
-    $userInDB = getUserByUsername($username);
+    $userInDB = getUserBylname($user_name);
 
-    if (strlen($username) < 2) {
+    if (strlen($user_name) < 2) {
         $result = [
             'isValid' => false,
             'msg' => 'Le nom utilisé est trop court'
 
         ];
-    } elseif (strlen($username) > 20) {
+    } elseif (strlen($user_name) > 20) {
         $result = [
             'isValid' => false,
             'msg' => 'Le nom utilisé est trop long'
@@ -30,7 +29,64 @@ function usernameIsValid(string $username): array
     }
     return $result;
 }
+function lastnameIsValid(string $lname): array
+{
+    $result = [
+        'isValid' => true,
+        'msg' => ''
+    ];
 
+    $userInDB = getUserBylname($lname);
+
+    if (strlen($lname) < 1) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le nom utilisé est trop court'
+
+        ];
+    } elseif (strlen($lname) > 30) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le nom utilisé est trop long'
+
+        ];
+    } elseif ($userInDB) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le nom est déjà utilisé'
+        ];
+    }
+    return $result;
+}
+function firstnameIsValid(string $fname): array
+{
+    $result = [
+        'isValid' => true,
+        'msg' => ''
+    ];
+
+    $userInDB = getUserByfname($fname);
+
+    if (strlen($fname) < 1) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le nom utilisé est trop court'
+
+        ];
+    } elseif (strlen($fname) > 30) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le nom utilisé est trop long'
+
+        ];
+    } elseif ($userInDB) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le nom est déjà utilisé'
+        ];
+    }
+    return $result;
+}
 function emailIsValid($email)
 {
 
@@ -61,6 +117,48 @@ function pwdLenghtValidation($pwd)
         return [
             'isValid' => false,
             'msg' => 'Votre mot de passe est trop long. Doit être inférieur a 16 caractères'
+        ];
+    }
+    return [
+        'isValid' => true,
+        'msg' => ''
+    ];
+}
+function shippingAddressValidation($shippingAddress)
+{
+    //minimum 6 max 16
+    $length = strlen($shippingAddress);
+
+    if ($length < 1) {
+        return [
+            'isValid' => false,
+            'msg' => 'addresse de facturation est trop courte'
+        ];
+    } elseif ($length > 4) {
+        return [
+            'isValid' => false,
+            'msg' => 'Votre Addresse de facturation est trop longue'
+        ];
+    }
+    return [
+        'isValid' => true,
+        'msg' => ''
+    ];
+}
+function billingAddressValidation($billinggAddress)
+{
+    //minimum 6 max 16
+    $length = strlen($billinggAddress);
+
+    if ($length < 1) {
+        return [
+            'isValid' => false,
+            'msg' => 'addresse de Livraison est trop courte'
+        ];
+    } elseif ($length > 4) {
+        return [
+            'isValid' => false,
+            'msg' => 'Votre Addresse de Livraison est trop longue'
         ];
     }
     return [
