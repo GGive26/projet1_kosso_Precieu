@@ -153,7 +153,8 @@ function updateToken(array $data)
 
         mysqli_stmt_bind_param(
             $stmt,
-            "s",
+            "ss",
+            $data['user_name'],
             $data['token']
         );
         echo"<p>dans update token</p>";

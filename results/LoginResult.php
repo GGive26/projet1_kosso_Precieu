@@ -27,25 +27,21 @@ if (isset($_POST)) {
     if ($userData) {
         // comparer pwd avec DB (version encodée)
         $enteredPwdEncoded = encodePwd($_POST['pwd']);
-        var_dump("(1)  ".$userData['pwd']);
-        echo"<br><br>";
-        var_dump("(2)  ".$enteredPwdEncoded);
 
         if ($userData['pwd'] == $enteredPwdEncoded) {
             //traitement si mdp correct
             echo"<p>Votre mot de passe est correct</p><br><br>";
             //créeer un token
             $token = hash('sha256', random_bytes(32));
-            echo '</br></br>Mon token : </br>';
+           
             
-            var_dump($token);
             //enregistrer le token en Session 
             $_SESSION['token']=$token;
 
             //envoie a la db
             $data=[
                 'user_name'=>$_POST['user_name'],
-                'token'=>$token
+                'token'=>$_SESSION['token']
             ];
             updateToken($data);
 
