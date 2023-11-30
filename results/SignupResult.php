@@ -34,20 +34,6 @@ if (isset($_POST)) {
             $fieldValidation = false;
         }
     }
-    if (isset($_POST['shipping_address_id'])) {
-        $shippingIsValidData = shippingAddressValidation($_POST['shipping_address_id']);
-
-        if ($shippingIsValidData['isValid'] == false) {
-            $fieldValidation = false;
-        }
-    }
-    if (isset($_POST['billing_address_id'])) {
-        $billingIsValidData = billingAddressValidation($_POST['billing_address_id']);
-
-        if ($billingIsValidData['isValid'] == false) {
-            $fieldValidation = false;
-        }
-    }
 
     //valid email
     if (isset($_POST['user_name'])) {
@@ -73,7 +59,10 @@ if (isset($_POST)) {
         $data = [
             'user_name' => $_POST['user_name'],
             'email' => $_POST['email'],
-            'pwd' => $encodedPwd
+            'pwd' => $_POST['pwd'],
+            'lname'=>$_POST['lname'],
+            'fname'=>$_POST['fname'],
+
         ];
          createUser($data);
     } else {
@@ -82,10 +71,8 @@ if (isset($_POST)) {
             'user_name' => $nameIsValidData['msg'],
             'email' => $emailIsValidData['msg'],
             'pwd' => $pwdIsValidData['msg'],
-            'shipping_address_id'=>$shippingIsValidData['msg'],
-            'lname'=>$lnameIsValidData['msg'],
-            'fname'=>$fnameIsValidData['msg'],
-            'billing_address_id'=>$billingIsValidData['msg']
+            'fname'=>$lnameIsValidData['msg'],
+            'lname'=>$fnameIsValidData['msg']
         ];
         $url = '../pages/SignUpClient.php';
         header('Location: ' . $url);

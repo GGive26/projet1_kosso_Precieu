@@ -124,50 +124,6 @@ function pwdLenghtValidation($pwd)
         'msg' => ''
     ];
 }
-function shippingAddressValidation($shippingAddress)
-{
-    //minimum 6 max 16
-    $length = strlen($shippingAddress);
-
-    if ($length < 1) {
-        return [
-            'isValid' => false,
-            'msg' => 'addresse de facturation est trop courte'
-        ];
-    } elseif ($length > 4) {
-        return [
-            'isValid' => false,
-            'msg' => 'Votre Addresse de facturation est trop longue'
-        ];
-    }
-    return [
-        'isValid' => true,
-        'msg' => ''
-    ];
-}
-function billingAddressValidation($billinggAddress)
-{
-    //minimum 6 max 16
-    $length = strlen($billinggAddress);
-
-    if ($length < 1) {
-        return [
-            'isValid' => false,
-            'msg' => 'addresse de Livraison est trop courte'
-        ];
-    } elseif ($length > 4) {
-        return [
-            'isValid' => false,
-            'msg' => 'Votre Addresse de Livraison est trop longue'
-        ];
-    }
-    return [
-        'isValid' => true,
-        'msg' => ''
-    ];
-}
-
-
 
 
 ?>

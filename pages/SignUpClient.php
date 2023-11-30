@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-var_dump($_SESSION);
 $user_name = '';
 if (isset($_SESSION['signup_form']['user_name'])) {
     $user_name = $_SESSION['signup_form']['user_name'];
@@ -21,14 +20,6 @@ if (isset($_SESSION['signup_form']['lname'])) {
 $fname = '';
 if (isset($_SESSION['signup_form']['fname'])) {
     $fname = $_SESSION['signup_form']['fname'];
-}
-$shippingAddress = '';
-if (isset($_SESSION['signup_form']['shipping_address_id'])) {
-    $shippingAddress = $_SESSION['signup_form']['shipping_address_id'];
-}
-$billingAddress = '';
-if (isset($_SESSION['signup_form']['billing_address_id'])) {
-    $billingAddress = $_SESSION['signup_form']['billing_address_id'];
 }
 
 ?>
@@ -63,17 +54,6 @@ if (isset($_SESSION['signup_form']['billing_address_id'])) {
         <input id="fname" type="text" name="fname" value="<?php echo $fname ?>" >
         <p class="error"><?php echo isset($_SESSION['signup_errors']['fname'])? $_SESSION['signup_errors']['fname'] : '' ?></p>
     </div>
-    <div>
-        <label for="shipping_address_id">Num Addresse de facturation :</label>
-        <input id="shipping_address_id" type="text" name="shipping_address_id" value="<?php echo $shippingAddress ?>">
-        <p class="error"><?php echo isset($_SESSION['signup_errors']['shipping_address_id'])? $_SESSION['signup_errors']['shipping_address_id'] : '' ?></p>
-    </div>
-    <div>
-        <label for="billing_address_id">Num Address de Livraison :</label>
-        <input id="billing_address_id" type="text" name="billing_address_id" value="<?php echo $billingAddress ?>">
-        <p class="error"><?php echo isset($_SESSION['signup_errors']['billing_address_id'])? $_SESSION['signup_errors']['billing_address_id'] : '' ?></p>
-    </div>
-
     <div>
     <label for="email">Courriel</label>
     <input id="email" type="text" name="email" value="<?php echo $email ?>">

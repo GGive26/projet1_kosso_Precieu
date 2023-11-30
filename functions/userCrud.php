@@ -4,22 +4,21 @@ function createUser(array $data)
 {
     global $conn;
     
-    $query = "INSERT INTO user VALUES (NULL,?,?,?,?,?,?,?,?,?)";
+    $query = "INSERT INTO user VALUES (NULL,?,?,?,?,?,0,0,'',3);";
 
-    if ($stmt = mysqli_prepare($conn, $query)) {
+$stmt = mysqli_prepare($conn, $query);
+var_dump($stmt);
+
+    if ($stmt) {
         
         mysqli_stmt_bind_param(
             $stmt,
-            "sssssiis",
+            "sssss",
             $data['user_name'],
             $data['email'],
             $data['pwd'],
             $data['fname'],
             $data['lname'],
-            $data['billing_adress_id'],
-            $data['shipping_adress_id'],
-            $data['token'],
-            $data['role_id'],
         );
 
         /* Exécution de la requête */
