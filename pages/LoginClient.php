@@ -24,8 +24,9 @@
 
     </fieldset>
     <input type="submit" value="Confirmrer">
-<button><a href="../index.php">Annuler</a></button>
+<button><a href="../index.php">Annuler</a></button><br><br>
+
+<h3 style="color: red;" > Si vous n'etes pas enregistrez chez nous,Le site ne seras pas accessible malheusement</h3>
     </form>
-    
 </body>
 </html>
