@@ -27,7 +27,7 @@ if (isset($_POST)) {
         //redirect vers login
         $url = '../pages/loginClient.php';
         header('Location: ' . $url);
-    }
+    };
 
     
     //si l'utilisateur exist dans la DB
@@ -62,13 +62,13 @@ if (isset($_POST)) {
             //Créer un msg d'erreur
             //renvoyer sur la page login
             echo "C'est pas le bon mdp ";        }
-    }
-} else {
-    //redirect vers login
-    $url = '../pages/login.php';
+    }else{
+        //redirect vers login
+    echo"<p>Votre Identifiiant n'es pas reconnue</p>";
+    $url = '../pages/loginClient.php';
     header('Location: ' . $url);
-}
-
+    }
+} 
 
 
 
