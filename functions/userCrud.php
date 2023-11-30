@@ -100,6 +100,7 @@ function getUserByfname(string $fname)
 function updateUser(array $data)
 {
     global $conn;
+    
 
     $query = "UPDATE user SET user_name = ?, email = ?, pwd = ?
             WHERE user.id = ?;";
@@ -146,7 +147,7 @@ function updateToken(array $data)
 {
     global $conn;
 
-    $query = "UPDATE user SET token = ?
+    $query = "UPDATE user SET token=?
             WHERE user.user_name = ?;";
 
     if ($stmt = mysqli_prepare($conn, $query)) {
@@ -154,8 +155,8 @@ function updateToken(array $data)
         mysqli_stmt_bind_param(
             $stmt,
             "ss",
-            $data['user_name'],
-            $data['token']
+            $data['token'],
+            $data['user_name']
         );
         echo"<p>dans update token</p>";
 

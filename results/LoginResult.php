@@ -1,5 +1,12 @@
+<html>
+    <head>
+    <title>Acceuil Utulisateur</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+
 <a href="../">Accueil</a>
 <h2>Login result</h2>
+<body class="ResultLog">
 <?php
 require_once '../functions/userCrud.php';
 require_once '../functions/functions.php';
@@ -72,3 +79,4 @@ if (isset($_POST)) {
 
 
 ?>
+</body>
