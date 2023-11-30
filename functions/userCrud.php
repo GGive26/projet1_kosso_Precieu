@@ -141,3 +141,24 @@ function deleteUser(int $id)
         $result = mysqli_stmt_execute($stmt);
     }
 }
+
+function updateToken(array $data)
+{
+    global $conn;
+
+    $query = "UPDATE user SET token = ?
+            WHERE user.user_name = ?;";
+
+    if ($stmt = mysqli_prepare($conn, $query)) {
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "s",
+            $data['token']
+        );
+        echo"<p>dans update token</p>";
+
+        /* Exécution de la requête */
+        $result = mysqli_stmt_execute($stmt);
+    }
+}

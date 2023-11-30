@@ -15,11 +15,11 @@
         <legend>
         INFORMATION DE CONNECTION
         </legend>
-                    <label for="identifiant">Identifiant : </label>
-                    <input type="text" id="identifiant" name="identification"><br><br> 
+                    <label for="user_name">Identifiant : </label>
+                    <input type="text" id="user_name" name="user_name"><br><br> 
 
-                    <label for="password">Password : </label>
-                    <input type="text" id="password" name="password"><br>
+                    <label for="pwd">Password : </label>
+                    <input type="text" id="pwd" name="pwd"><br>
 
 
     </fieldset>

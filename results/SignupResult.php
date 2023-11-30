@@ -59,7 +59,7 @@ if (isset($_POST)) {
         $data = [
             'user_name' => $_POST['user_name'],
             'email' => $_POST['email'],
-            'pwd' => $_POST['pwd'],
+            'pwd' =>encodePwd($_POST['pwd']),
             'lname'=>$_POST['lname'],
             'fname'=>$_POST['fname'],
 
