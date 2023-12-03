@@ -158,7 +158,6 @@ function updateToken(array $data)
             $data['token'],
             $data['user_name']
         );
-        echo"<p>dans update token</p>";
 
         /* Exécution de la requête */
         $result = mysqli_stmt_execute($stmt);

@@ -1,4 +1,36 @@
-<a href="../">Accueil</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>ValidationEnregistrement</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+ <img src="../styles/images/bienvenu.webp" class="img-circle" width="80" height="70" />
+ <a class="navbar-brand" href="#">Librairie Soleil</a>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+         <li class="nav-item active">
+             <a class="nav-link" href="../index.php">Accueil<span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
+         </li>
+     </ul>
+ </div>
+</nav>  
 <?php
 require_once '../functions/validation.php';
 require_once '../functions/userCrud.php';
@@ -62,9 +94,17 @@ if (isset($_POST)) {
             'pwd' =>encodePwd($_POST['pwd']),
             'lname'=>$_POST['lname'],
             'fname'=>$_POST['fname'],
-
         ];
          createUser($data);
+         $_SESSION['auth']=[
+            'user_name'=>$data['user_name'],
+            'pwd'=>$data['pwd'],
+         ];
+         echo"<script>
+         alert('Votre Compte a été crée')
+         <script>";
+         $url = '../PagesInterne/AcceuilClient.php';
+         header('Location: ' . $url);
     } else {
         // redirect to signup et donner les messages d'erreur
         $_SESSION['signup_errors'] = [
@@ -83,3 +123,6 @@ if (isset($_POST)) {
     header('Location: ' . $url);
 }
 
+?>
+</body>
+</html>

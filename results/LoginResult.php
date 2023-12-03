@@ -1,25 +1,39 @@
 <html>
     <head>
     <title>Acceuil Utulisateur</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
     </head>
-
-<a href="../">Accueil</a>
-<h2>Login result</h2>
-<body class="ResultLog">
-<nav>
-  <ul>
-    <li><a href="../index.php">Accueil</a></li>
-    <li><a href="../pages/SignUpClient.php">À propos</a></li>
-    <li><a href="../PageInterne/profil.php">Profil Users</a></li>
-  </ul>
+<body >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+ <img src="../styles/images/bienvenu.webp" class="img-circle" width="80" height="70" />
+ <a class="navbar-brand" href="#">CrazySimpson</a>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+         <li class="nav-item active">
+             <a class="nav-link" href="../index.php">Accueil</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
+         </li>
+     </ul>
+ </div>
 </nav>
 <?php
 require_once '../functions/userCrud.php';
 require_once '../functions/functions.php';
 require_once '../utils/connexion.php';
 
-var_dump($_POST);
+session_start();
 
 //Authentification
 
@@ -42,24 +56,30 @@ if (isset($_POST)) {
 
         if ($userData['pwd'] == $enteredPwdEncoded) {
             //traitement si mdp correct
-            echo"<p>Votre mot de passe est correct</p><br><br>";
+            echo"<h2>Salut  ".$_POST['user_name']."</h2><br>";
             $token = hash('sha256', random_bytes(32));
            
             //enregistrer le token en Session 
             $_SESSION['auth']=[
                 'token'=> $token,
                 'id'=>$userData['id'],
-                'role-id'=>$userData['role_id']
+                'role_id'=>$userData['role_id']
             ];
 
             //envoie a la db
             $data=[
                 'user_name'=>$_POST['user_name'],
-                'token'=>$_SESSION['token']
+                'token'=>$_SESSION['auth']['token']
             ];
             updateToken($data);
 
-            echo "C'est le bon mdp ";
+            echo"<h5> Appuie sur le boutton Acceuil afin d'entrer dans le site ,Bye</h5>";
+            if($_SESSION['auth']['role_id']==3){
+            echo"<a class='btn btn-success' href='../PageInterne/AcceuilClient.php' >Click</a>";
+            }
+            else{
+                echo"<a class='btn btn-success' href='../PageInterne/AcceuilAdmin.php'>Click</a>";
+            }
         }else {
             //traitement si mdp incorrect
             echo"<p><b>Votre mot de passe est incorrect</b></p><br><br>";

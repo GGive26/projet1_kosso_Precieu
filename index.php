@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body class="index">
+    <?php
+    session_start();
+    ?>
     <h1>HELLO</h1>
     <h3>Vous etes déja de la famille ou Souhaitez vous Enregistrez</h3>
     <form class="form">
