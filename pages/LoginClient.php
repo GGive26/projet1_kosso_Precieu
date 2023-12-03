@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body class="LoginAdmin">
+    <form class="nav">
+        <fieldset><legend></legend>
+<nav> 
+            <div class="row">
+            <div class="md-col-12">
+                <b><p>SITE D'ACHAT DU DESSINS LES SIMPSONS</p></b>
+                <button><a href="../index.php">Authentification</a></button>
+                   <button> <a href="../pages/SignUpClient.php">S'enregistrer</a></button>
+                 </div>
+            </div> 
+        </nav> 
+    </fieldset>
+        </form>
     <h1>Entrez vos identifiants Administrateur</h1>
 
     <form class="form" action="../results/LoginResult.php" method="post">

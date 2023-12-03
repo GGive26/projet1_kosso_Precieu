@@ -1,20 +1,25 @@
 .index {
-  background-image: url("./creation-site-e-commerce.jpeg");
+  background-image: url("./images/creation-site-e-commerce.jpeg");
+}
+.nav {
+  background-color: black;
+  background-image: none;
+  color: white;
 }
 .form {
   text-align: center;
   background-color: beige;
 }
 .LoginAdmin {
-  background-image: url("./Login.webp");
+  background-image: url("./images/Login.webp");
 }
 .SignUp {
-  background-image: url("./SignUp.jfif");
+  background-image: url("./images/SignUp.jfif");
 }
 .error {
   color: red;
   font-size: 0.8rem;
 }
 .ResultLog {
-  background-image: url(./bienvenu2.avif);
+  background-image: url("./images/bienvenu2.avif");
 }

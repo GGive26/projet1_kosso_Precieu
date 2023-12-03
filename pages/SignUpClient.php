@@ -34,6 +34,16 @@ if (isset($_SESSION['signup_form']['fname'])) {
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body class="SignUp">
+<nav class="navigation"> 
+            <div class="row">
+                <div class="col-md-6"> 
+                <button><a href="../index.php">Authentification</a></button>
+                </div>
+                <div class="col-md-6">
+                   <button> <a href="../pages/SignUpClient.php">S'enregistrer</a></button>
+                 </div> 
+            </ul> 
+        </nav> 
     <h1> Bienvenue</h1>
 
     <form method="post" action="../results/SignupResult.php" class="form">

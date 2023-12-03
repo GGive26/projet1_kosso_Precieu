@@ -7,6 +7,13 @@
 <a href="../">Accueil</a>
 <h2>Login result</h2>
 <body class="ResultLog">
+<nav>
+  <ul>
+    <li><a href="../index.php">Accueil</a></li>
+    <li><a href="../pages/SignUpClient.php">À propos</a></li>
+    <li><a href="../PageInterne/profil.php">Profil Users</a></li>
+  </ul>
+</nav>
 <?php
 require_once '../functions/userCrud.php';
 require_once '../functions/functions.php';
@@ -30,20 +37,20 @@ if (isset($_POST)) {
     };
 
     
-    //si l'utilisateur exist dans la DB
     if ($userData) {
-        // comparer pwd avec DB (version encodée)
         $enteredPwdEncoded = encodePwd($_POST['pwd']);
 
         if ($userData['pwd'] == $enteredPwdEncoded) {
             //traitement si mdp correct
             echo"<p>Votre mot de passe est correct</p><br><br>";
-            //créeer un token
             $token = hash('sha256', random_bytes(32));
            
-            
             //enregistrer le token en Session 
-            $_SESSION['token']=$token;
+            $_SESSION['auth']=[
+                'token'=> $token,
+                'id'=>$userData['id'],
+                'role-id'=>$userData['role_id']
+            ];
 
             //envoie a la db
             $data=[
@@ -55,13 +62,8 @@ if (isset($_POST)) {
             echo "C'est le bon mdp ";
         }else {
             //traitement si mdp incorrect
-            echo"<p>Votre mot de passe est incorrect</p><br><br>";
-            //compter lenombre d'erreur et bloquer l'IP apres 3 erreur
-            //Les erreurs peuvent etre dans une Session
-            //Proposer de réinitialiser le mdp
-            //Créer un msg d'erreur
-            //renvoyer sur la page login
-            echo "C'est pas le bon mdp ";        }
+            echo"<p><b>Votre mot de passe est incorrect</b></p><br><br>";
+              }
     }else{
         //redirect vers login
     echo"<p>Votre Identifiiant n'es pas reconnue</p>";
@@ -70,13 +72,12 @@ if (isset($_POST)) {
     }
 } 
 
-
-
-
-
-
-
-
-
 ?>
+
+
+
+
+
+
+
 </body>
