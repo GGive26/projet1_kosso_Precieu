@@ -42,15 +42,11 @@ function getAllUsers()
 
     return $data;
 }
-/**
- * Get user by id
- */
 
- //Todo: edit to prepare
 function getUserById(int $id)
 {
     global $conn;
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE id = " . $id);
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE id = ".$id);
 
     $data = mysqli_fetch_assoc($result);
 

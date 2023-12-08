@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../styles/style.css">
     <title>ValidationEnregistrement</title>
 </head>
-<body>
+<body class="LoginResult">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
  
  <img src="../styles/images/bienvenu.webp" class="img-circle" width="80" height="70" />
@@ -100,10 +100,7 @@ if (isset($_POST)) {
             'user_name'=>$data['user_name'],
             'pwd'=>$data['pwd'],
          ];
-         echo"<script>
-         alert('Votre Compte a été crée')
-         <script>";
-         $url = '../PagesInterne/AcceuilClient.php';
+         $url = '../pages/LoginClient.php';
          header('Location: ' . $url);
     } else {
         // redirect to signup et donner les messages d'erreur

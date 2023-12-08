@@ -18,3 +18,14 @@
 .ResultLog {
   background-image: url("./images/bienvenu2.avif");
 }
+.LoginResult {
+  background-image: url("./images/Success.webp");
+  text-align: center;
+  color: white;
+}
+.acceuilClient {
+  background-image: url("./images/AcceuilClient.jpg");
+}
+.acceuilAdmin {
+  background-image: url("./images/AcceuilAdmin.jpg");
+}

@@ -1,30 +1,3 @@
-<?php
-
-session_start();
-$user_name = '';
-if (isset($_SESSION['signup_form']['user_name'])) {
-    $user_name = $_SESSION['signup_form']['user_name'];
-}
-$email = '';
-if (isset($_SESSION['signup_form']['email'])) {
-    $email = $_SESSION['signup_form']['email'];
-}
-$pwd = '';
-if (isset($_SESSION['signup_form']['pwd'])) {
-    $pwd = $_SESSION['signup_form']['pwd'];
-}
-$lname = '';
-if (isset($_SESSION['signup_form']['lname'])) {
-    $lname = $_SESSION['signup_form']['lname'];
-}
-$fname = '';
-if (isset($_SESSION['signup_form']['fname'])) {
-    $fname = $_SESSION['signup_form']['fname'];
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +23,31 @@ if (isset($_SESSION['signup_form']['fname'])) {
      </ul>
  </div>
 </nav>
+<?php
 
+session_start();
+$user_name = '';
+if (isset($_SESSION['signup_form']['user_name'])) {
+    $user_name = $_SESSION['signup_form']['user_name'];
+}
+$email = '';
+if (isset($_SESSION['signup_form']['email'])) {
+    $email = $_SESSION['signup_form']['email'];
+}
+$pwd = '';
+if (isset($_SESSION['signup_form']['pwd'])) {
+    $pwd = $_SESSION['signup_form']['pwd'];
+}
+$lname = '';
+if (isset($_SESSION['signup_form']['lname'])) {
+    $lname = $_SESSION['signup_form']['lname'];
+}
+$fname = '';
+if (isset($_SESSION['signup_form']['fname'])) {
+    $fname = $_SESSION['signup_form']['fname'];
+}
+
+?>
     <form method="post" action="../results/SignupResult.php" class="form">
         <fieldset>
             <legend>ENREGISTREMENT</legend>

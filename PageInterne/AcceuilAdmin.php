@@ -8,7 +8,7 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
-<body>
+<body class="acceuilAdmin">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
  
  <img src="../styles/images/bienvenu.webp" class="img-circle" width="80" height="70" />
@@ -20,13 +20,19 @@
  <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav">
          <li class="nav-item active">
-             <a class="nav-link" href="../index.php">Accueil</a>
+             <a class="nav-link" href="#">Accueil</a>
          </li>
          <li class="nav-item">
              <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
          </li>
          <li class="nav-item">
              <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="gestionUser.php">gestionUsers</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="gestionProduct.php">gestionProduct</a>
          </li>
      </ul>
  </div>
