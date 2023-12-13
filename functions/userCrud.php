@@ -97,23 +97,25 @@ function updateUser(array $data)
 {
     global $conn;
     
+    $query = "UPDATE user SET  email = ?,lname = ?, fname = ? WHERE user.id = ?;";
 
-    $query = "UPDATE user SET user_name = ?, email = ?, pwd = ?
-            WHERE user.id = ?;";
+$stmt = mysqli_prepare($conn, $query);
 
-    if ($stmt = mysqli_prepare($conn, $query)) {
+var_dump($stmt);
+    if ($stmt) {
 
         mysqli_stmt_bind_param(
             $stmt,
             "sssi",
-            $data['user_name'],
             $data['email'],
-            $data['pwd'],
+            $data['lname'],
+            $data['fname'],
             $data['id'],
         );
 
         /* Exécution de la requête */
         $result = mysqli_stmt_execute($stmt);
+        return $result;
     }
 }
 /**
@@ -157,5 +159,57 @@ function updateToken(array $data)
 
         /* Exécution de la requête */
         $result = mysqli_stmt_execute($stmt);
+    }
+}
+
+function createProduct(array $data)
+{
+    global $conn;
+    
+    $query = "INSERT INTO product VALUES (NULL,?,?,?,?,?);";
+
+$stmt = mysqli_prepare($conn, $query);
+var_dump($stmt);
+
+    if ($stmt) {
+        
+        mysqli_stmt_bind_param(
+            $stmt,
+            "siiss",
+            $data['name'],
+            $data['quantity'],
+            $data['price'],
+            $data['img_url'],
+            $data['description'],
+        );
+
+        /* Exécution de la requête */
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
+    }
+}
+
+function getProduct(string $name)
+{
+    global $conn;
+
+    $query = "SELECT * FROM product WHERE product.name = ?;";
+    
+
+    $stmt = mysqli_prepare($conn, $query);
+
+
+    if ($stmt) {
+        
+        mysqli_stmt_bind_param(
+            $stmt,
+            "s",
+            $name        
+        );
+
+        /* Exécution de la requête */
+        $result = mysqli_stmt_execute($stmt);
+        var_dump($result);
+        return $result;
     }
 }

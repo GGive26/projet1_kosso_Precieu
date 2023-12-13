@@ -1,18 +1,11 @@
-<?php
-session_start();
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcceuilAdmin</title>
+<html>
+    <head>
+    <title>Acceuil Utulisateur</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
-</head>
-<body class="acceuilAdmin">
+    </head>
+<body class="LoginResult">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
  
  <img src="../styles/images/bienvenu.webp" class="img-circle" width="80" height="70" />
@@ -24,7 +17,7 @@ session_start();
  <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav">
          <li class="nav-item active">
-             <a class="nav-link" href="#">Accueil</a>
+             <a class="nav-link" href="../index.php">Accueil</a>
          </li>
          <li class="nav-item">
              <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
@@ -32,15 +25,52 @@ session_start();
          <li class="nav-item">
              <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
          </li>
-         <li class="nav-item">
-             <a class="nav-link" href="gestionUser.php">gestionUsers</a>
-         </li>
-         <li class="nav-item">
-             <a class="nav-link" href="gestionProduct.php">gestionProduct</a>
-         </li>
      </ul>
  </div>
 </nav>
-<h1>AcceuilAdmin</h1>
+<?php
+require_once '../functions/userCrud.php';
+require_once '../functions/functions.php';
+require_once '../utils/connexion.php';
+
+session_start();
+
+//Authentification
+
+if (isset($_POST)) {
+
+    //vérifier si username dans DB
+    if(isset($_SESSION)){
+        $userData = getUserById($_SESSION['auth']['id']);
+    
+    if ($userData) {
+           //essaie de modification du profil
+           $data=[
+            'lname'=>$_POST['lname'],
+            'fname'=>$_POST['fname'],
+            'email'=>$_POST['email'],
+            'id'=>$userData['id']
+           ];
+           $updateUsers=updateUser($data);
+            if($_SESSION['auth']['role_id']>2){
+           $url = './AcceuilClient.php';
+           header('Location: ' . $url);
+            }else{
+                $url = './AcceuilAdmin.php';
+                header('Location: ' . $url);
+            }
+           
+        }
+
+    }
+} 
+
+?>
+
+
+
+
+
+
+
 </body>
-</html>

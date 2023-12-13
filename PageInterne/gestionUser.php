@@ -49,7 +49,7 @@ $userbyName=getUserByUsername($userconnected['user_name']);
  </div>
 </nav>
     <h1>gestionUsers</h1>
-<form >
+<form action="./editUsers.php" method="post">
     <select name="user_name">
         <?php
                 foreach($users as $user=> $name){
@@ -59,7 +59,15 @@ $userbyName=getUserByUsername($userconnected['user_name']);
         ?>
         </option>
         <?php
-        }?>
+        }
+        ?>
+        <br>
+    
+    </select>
+    <select name="role_id">
+        <option>superadmin</option>
+        <option>admin</option>
+        <option>client</option>
     </select>
 </form>
 <?php

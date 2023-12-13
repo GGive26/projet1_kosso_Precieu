@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GestionProduit</title>
+    <title>Ajout</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
-<body class="acceuilAdmin">
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
  
  <img src="../styles/images/bienvenu.webp" class="img-circle" width="80" height="70" />
@@ -37,40 +37,44 @@
      </ul>
  </div>
 </nav>
-    <h1>GestionProduit</h1>
+<?php
+require_once '../functions/userCrud.php';
+require_once '../functions/functions.php';
+require_once '../utils/connexion.php';
 
-    <form method="post" action="./ajoutProduit.php" class="form">
-        <fieldset>
-            <legend>Ajout des produits</legend>
-    <div>
-        <label for="name">Nom du produit</label>
-        <input id="name" type="text" name="name" " >
-    </div>
-    <div>
-        <label for="quantity">quantity  : </label>
-        <input id="quantity" type="number" name="quantity"  >
-    </div>
-    <div>
-        <label for="price">Prix : </label>
-        <input id="price" type="number" name="price" >
-    </div>
-    <div>
-        <label for="images">Images</label>
-    <select name="img_url" id="images">
-        <option><a href="../styles/images/index.webp">Les simpsons</a></option>
-        <option><a href="../styles/images/demonSlayer.jpg">Demon Slayer</a></option>
-        <option><a href="../styles/images/detectiveConan.jpg">Detective conan</a></option>
-        <option><a href="../styles/images/kingdom.jpg">Kingdom</a></option>
-    </select>
+session_start();
+if (isset($_POST)) {
 
-    </div>
-    <div>
-    <label for="description">Description</label>
-    <input id="description" type="text" name="description" >
- 
-    </div>
-        </fieldset>
-    <input type="submit" value="Ajout">
-    </form>
+//vérifier si username dans DB
+if (!empty($_POST['name'])) {
+    $productData = getProduct($_POST['name']);
+} else {
+    //Erreur rien e
+    echo"<p>Veuillez remplir la case des produits</p><br><br>";
+    //redirect vers login
+    $url = './gestionProduct.php';
+    header('Location: ' . $url);
+};
+
+
+if ($productData==false) {
+  
+    echo"<h1>Ce produit existe deja</h1>";
+    }else {
+        $data=[
+            'name'=>$_POST['name'],
+            'quantity'=>$_POST['quantity'],
+            'price'=>$_POST['price'],
+            'img_url'=>$_POST['img_url'],
+            'description'=>$_POST['description']
+        ];
+        createProduct($data);
+        //traitement si mdp incorrect
+        echo"<p><b>Votre produit a ete enregistrer </b></p><br><br>";
+        $url = './AcceuilAdmin.php';
+    header('Location: ' . $url);
+          }
+}
+?>
 </body>
 </html>

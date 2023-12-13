@@ -57,15 +57,10 @@ if(isset($_SESSION['auth'])){
 $userconnected=getUserById($_SESSION['auth']['id']);
 $userbyName=getUserByUsername($userconnected['user_name']);
    ?> 
-   <form action="post" method="./editProfilUsers.php">
+   <form action="./editProfil.php" method="post">
    <fieldset>
             <h1><center><legend>Modification Du Profil <?php echo "<h1>".$userconnected['user_name']."</h1>";?></legend></center></h1>
     <div class="container">
-    <div>
-        <label for="user_name">Nom d'utilisateur</label>
-        <input id="user_name" type="text" name="user_name" value="<?php echo $userbyName['user_name'] ?>" >
-        <p class="error"><?php echo isset($_SESSION['signup_errors']['user_name'])? $_SESSION['signup_errors']['user_name'] : '' ?></p>
-    </div>
     <div>
         <label for="lname">Nom  : </label>
         <input id="lname" type="text" name="lname" value="<?php echo $userbyName['lname'] ?>">
@@ -76,17 +71,12 @@ $userbyName=getUserByUsername($userconnected['user_name']);
         <input id="fname" type="text" name="fname" value="<?php echo $userbyName['fname'] ?>">
         <p class="error"><?php echo isset($_SESSION['signup_errors']['fname'])? $_SESSION['signup_errors']['fname'] : '' ?></p>
     </div>
+
     <div>
     <label for="email">Courriel</label>
     <input id="email" type="text" name="email" value="<?php echo $userbyName['email'] ?>">
     <p class="error"><?php echo isset($_SESSION['signup_errors']['email'])? $_SESSION['signup_errors']['email'] : '' ?></p>
 
-    </div>
-    <div>
-    <label for="pwd">Mot de passe</label>
-    <input id="pwd" type="password" name="pwd" value="<?php echo $userbyName['pwd'] ?>">
-    <p class="error"><?php echo isset($_SESSION['signup_errors']['pwd'])? $_SESSION['signup_errors']['pwd'] : '' ?></p>
- 
     </div>
     </div>
         </fieldset>

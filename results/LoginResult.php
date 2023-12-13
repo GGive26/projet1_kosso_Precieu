@@ -62,6 +62,7 @@ if (isset($_POST)) {
             //enregistrer le token en Session 
             $_SESSION['auth']=[
                 'token'=> $token,
+                'user_name'=>$_POST['user_name'],
                 'id'=>$userData['id'],
                 'role_id'=>$userData['role_id']
             ];
