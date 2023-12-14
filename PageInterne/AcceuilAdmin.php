@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+require_once '../functions/userCrud.php';
+require_once '../functions/functions.php';
+require_once '../utils/connexion.php';
+$mesProduits=afficherProduit();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +44,35 @@ session_start();
      </ul>
  </div>
 </nav>
-<h1>AcceuilAdmin</h1>
+<h1>Bienvenue dans notre Site dedié aux Otakus</h1>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <?php  foreach($mesProduits as $produit){ ?>
+            <form method="" action="" >
+    <div class="col">
+          <div class="card shadow-sm" style="width: 18rem;">
+            
+            <img src="<?php echo $produit["img_url"] ?>" class="card-img-top" alt="...">
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em"> <H3><?php echo $produit['quantity'] ?></H3></text>
+            <div class="card-body">
+              <p class="card-text"><?php echo $produit["description"] ?> </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">acheter</button> -->
+                  <a href="#" class="card-link"><button type="submit" class="btn btn-primary">Acheter</button></a>
+                </div>
+                <small class="text-body-secondary"><?php echo $produit["price"] ?> $CAD</small>
+              </div>
+            </div>
+          </div>
+        </div>
+<?php }?>
+    </div>
+    </div>
+</div>
+  </form>
+
 </body>
 </html>

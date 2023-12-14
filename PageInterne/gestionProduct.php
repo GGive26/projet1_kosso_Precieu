@@ -57,8 +57,8 @@
     <div>
         <label for="images">Images</label>
         <input type="text" id="images" name="img_url" value="../styles/images/"><br>
-        <p>les mangas dans la db sont : demon slayer,naruto,kuroko,my hero academia, kingdom, les simpsons,jujutsu kaisen</p>
-        <p>veuillez a ne pas effacer les premiers lignes ,ajouter juste le nom du mangas souhaiter ensuite un .jpeg</p>
+        <p>les mangas sont : demonSlayer,naruto,kuroko,myheroacademia,kingdom, lesSimpson,jujutsukaisen et detectiveConan </p>
+        <p>veuillez a ne pas effacer les premiers lignes ,ajouter juste le nom du mangas souhaiter ensuite un (.jpg) a la fin</p>
 
     </div>
     <div>

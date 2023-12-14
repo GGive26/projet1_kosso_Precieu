@@ -213,3 +213,18 @@ function getProduct(string $name)
         return $result;
     }
 }
+
+function afficherProduit()
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM product ORDER BY id DESC");
+
+    $data = [];
+    $i = 0;
+    while ($rangeeData = mysqli_fetch_assoc($result)) {
+        $data[$i] = $rangeeData;
+        $i++;
+    };
+
+    return $data;
+}

@@ -19,12 +19,6 @@
          <li class="nav-item active">
              <a class="nav-link" href="../index.php">Accueil</a>
          </li>
-         <li class="nav-item">
-             <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
-         </li>
-         <li class="nav-item">
-             <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
-         </li>
      </ul>
  </div>
 </nav>
