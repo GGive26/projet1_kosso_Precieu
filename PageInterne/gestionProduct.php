@@ -45,30 +45,27 @@
     <div>
         <label for="name">Nom du produit</label>
         <input id="name" type="text" name="name" " >
-    </div>
+    </div><br>
     <div>
         <label for="quantity">quantity  : </label>
         <input id="quantity" type="number" name="quantity"  >
-    </div>
+    </div><br>
     <div>
         <label for="price">Prix : </label>
         <input id="price" type="number" name="price" >
-    </div>
+    </div><br>
     <div>
         <label for="images">Images</label>
-    <select name="img_url" id="images">
-        <option><a href="../styles/images/index.webp">Les simpsons</a></option>
-        <option><a href="../styles/images/demonSlayer.jpg">Demon Slayer</a></option>
-        <option><a href="../styles/images/detectiveConan.jpg">Detective conan</a></option>
-        <option><a href="../styles/images/kingdom.jpg">Kingdom</a></option>
-    </select>
+        <input type="text" id="images" name="img_url" value="../styles/images/"><br>
+        <p>les mangas dans la db sont : demon slayer,naruto,kuroko,my hero academia, kingdom, les simpsons,jujutsu kaisen</p>
+        <p>veuillez a ne pas effacer les premiers lignes ,ajouter juste le nom du mangas souhaiter ensuite un .jpeg</p>
 
     </div>
     <div>
     <label for="description">Description</label>
     <input id="description" type="text" name="description" >
  
-    </div>
+    </div><br>
         </fieldset>
     <input type="submit" value="Ajout">
     </form>
