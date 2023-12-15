@@ -49,7 +49,8 @@ $userbyName=getUserByUsername($userconnected['user_name']);
  </div>
 </nav>
     <h1>gestionUsers</h1>
-<form action="./editUsers.php" method="post">
+<form action="./editUsers.php" method="post" class="form">
+    <fieldset><legend>Gestion des Produits</legend>
     <select name="user_name">
         <?php
                 foreach($users as $user=> $name){
@@ -64,14 +65,39 @@ $userbyName=getUserByUsername($userconnected['user_name']);
         <br>
     
     </select>
+    <?php if($_SESSION['auth']['role_id']==1){?>
     <select name="role_id">
-        <option>superadmin</option>
-        <option>admin</option>
-        <option>client</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
     </select>
+    <?php }else{
+        ?> <select name="role_id">
+        <option>2</option>
+        <option>3</option>
+    </select>
+    <?php
+    }
+    ?>
+    <p>NB:le 1 est pour SuperAdmin , 2 Admin et 3 client</p>
+
+    <input type="submit" value="Changer">
+    </fieldset>
 </form>
 <?php
 }
 ?>
+    <br><br>
+    <form class="form" action="./deleteUsers.php" method="post">
+
+    <fieldset>
+        <legend>Suppression des Users</legend>
+    <label for="user_name">le Nom du Users</label>
+    <input type="text" id="name" name="user_name"><br>
+
+    <input type="submit" value="Supprimer">
+
+</fieldset>
+    </form>
 </body>
 </html>

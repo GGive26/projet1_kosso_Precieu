@@ -100,6 +100,8 @@ if (isset($_POST)) {
             'user_name'=>$data['user_name'],
             'pwd'=>$data['pwd'],
          ];
+         $info=getUserByUsername($data['user_name']);
+         upUserId($info['id']);
          $url = '../pages/LoginClient.php';
          header('Location: ' . $url);
     } else {

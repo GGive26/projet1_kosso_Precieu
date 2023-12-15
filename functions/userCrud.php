@@ -1,5 +1,4 @@
 <?php
-
 function createUser(array $data)
 {
     global $conn;
@@ -7,7 +6,6 @@ function createUser(array $data)
     $query = "INSERT INTO user VALUES (NULL,?,?,?,?,?,0,0,'',3);";
 
 $stmt = mysqli_prepare($conn, $query);
-var_dump($stmt);
 
     if ($stmt) {
         
@@ -21,13 +19,10 @@ var_dump($stmt);
             $data['lname'],
         );
 
-        /* Exécution de la requête */
         $result = mysqli_stmt_execute($stmt);
     }
 }
-/**
- * Get all users
- */
+
 function getAllUsers()
 {
     global $conn;
@@ -61,7 +56,6 @@ function getUserByUsername(string $user_name)
 
     $result = mysqli_query($conn, $query);
 
-    // avec fetch row : tableau indexé
     $data = mysqli_fetch_assoc($result);
     return $data;
 }
@@ -90,9 +84,7 @@ function getUserByfname(string $fname)
     return $data;
 }
 
-/**
- * Update user
- */
+
 function updateUser(array $data)
 {
     global $conn;
@@ -101,7 +93,7 @@ function updateUser(array $data)
 
 $stmt = mysqli_prepare($conn, $query);
 
-var_dump($stmt);
+
     if ($stmt) {
 
         mysqli_stmt_bind_param(
@@ -118,9 +110,7 @@ var_dump($stmt);
         return $result;
     }
 }
-/**
- * Delete user
- */
+
 function deleteUser(int $id)
 {
     global $conn;
@@ -136,8 +126,9 @@ function deleteUser(int $id)
             $id,
         );
 
-        /* Exécution de la requête */
+        
         $result = mysqli_stmt_execute($stmt);
+        return $result;
     }
 }
 
@@ -157,7 +148,7 @@ function updateToken(array $data)
             $data['user_name']
         );
 
-        /* Exécution de la requête */
+        
         $result = mysqli_stmt_execute($stmt);
     }
 }
@@ -183,7 +174,7 @@ var_dump($stmt);
             $data['description'],
         );
 
-        /* Exécution de la requête */
+       
         $result = mysqli_stmt_execute($stmt);
         return $result;
     }
@@ -192,24 +183,16 @@ var_dump($stmt);
 function getProduct(string $name)
 {
     global $conn;
-
     $query = "SELECT * FROM product WHERE product.name = ?;";
-    
-
     $stmt = mysqli_prepare($conn, $query);
 
-
-    if ($stmt) {
-        
+    if ($stmt) {       
         mysqli_stmt_bind_param(
             $stmt,
             "s",
             $name        
-        );
-
-        /* Exécution de la requête */
+        );      
         $result = mysqli_stmt_execute($stmt);
-        var_dump($result);
         return $result;
     }
 }
@@ -227,4 +210,67 @@ function afficherProduit()
     };
 
     return $data;
+}
+
+function updateRoleId(array $data)
+{
+    global $conn;
+
+    $query = "UPDATE user SET role_id=?
+            WHERE user.user_name = ?;";
+
+    if ($stmt = mysqli_prepare($conn, $query)) {
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "is",
+            $data['role_id'],
+            $data['user_name']
+        );
+
+        
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
+    }
+}
+
+function deleteProduct(string $name)
+{
+    global $conn;
+
+    $query = "DELETE FROM product
+                WHERE product.name = ?;";
+
+    if ($stmt = mysqli_prepare($conn, $query)) {
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "s",
+            $name,
+        );
+
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
+    }
+}
+
+function upUserId(string $id){
+    global $conn;
+
+    $query = "UPDATE user SET billing_address_id='".$id."',shipping_address_id='".$id."'
+            WHERE user.id = ?;";
+
+    if ($stmt = mysqli_prepare($conn, $query)) {
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "i",
+            $id
+        );
+
+        
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
+    }
+
 }

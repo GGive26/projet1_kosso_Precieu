@@ -37,7 +37,7 @@
      </ul>
  </div>
 </nav>
-    <h1>GestionProduit</h1>
+    <center><h1>Acceuil des Produits</h1></center>
 
     <form method="post" action="./ajoutProduit.php" class="form">
         <fieldset>
@@ -68,6 +68,18 @@
     </div><br>
         </fieldset>
     <input type="submit" value="Ajout">
+    </form>
+    <br><br>
+    <form class="form" action="./deleteProduct.php" method="post">
+
+    <fieldset>
+        <legend>Suppression des Produits</legend>
+    <label for="name">le Nom du produit</label>
+    <input type="text" id="name" name="name"><br>
+
+    <input type="submit" value="Supprimer">
+
+</fieldset>
     </form>
 </body>
 </html>
