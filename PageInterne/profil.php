@@ -57,9 +57,10 @@ if(isset($_SESSION['auth'])){
 $userconnected=getUserById($_SESSION['auth']['id']);
 $userbyName=getUserByUsername($userconnected['user_name']);
    ?> 
+   <center><h1>Informations Personnelles</h1></center>
    <form action="./editProfil.php" method="post">
    <fieldset>
-            <h1><center><legend>Modification Du Profil <?php echo "<h1>".$userconnected['user_name']."</h1>";?></legend></center></h1>
+            <legend> <?php echo "<h1>".$userconnected['user_name']."</h1>";?></legend>
     <div class="container">
     <div>
         <label for="lname">Nom  : </label>

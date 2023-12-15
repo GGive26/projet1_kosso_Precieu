@@ -39,7 +39,7 @@ $mesProduits=afficherProduit();
      </ul>
  </div>
 </nav>
-    <h1>AcceuilClient</h1>
+<center><h3>Bienvenue dans notre Site dedié aux Otakus</h3></center>
 
     <div class="album py-5 bg-body-tertiary">
     <div class="container">

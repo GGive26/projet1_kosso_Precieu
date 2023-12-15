@@ -44,7 +44,7 @@ $mesProduits=afficherProduit();
      </ul>
  </div>
 </nav>
-<h1>Bienvenue dans notre Site dedié aux Otakus</h1>
+<center><h3>Bienvenue dans notre Site dedié aux Otakus</h3></center>
 
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
@@ -57,6 +57,7 @@ $mesProduits=afficherProduit();
             <img src="<?php echo $produit["img_url"] ?>" class="card-img-top" alt="...">
             <text x="50%" y="50%" fill="#eceeef" dy=".3em"> <H3><?php echo $produit['quantity'] ?></H3></text>
             <div class="card-body">
+            <p class="card-text"><b><?php echo $produit["name"] ?></b> </p>
               <p class="card-text"><?php echo $produit["description"] ?> </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">

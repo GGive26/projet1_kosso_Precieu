@@ -67,10 +67,4 @@ if (isset($_POST)) {
 
 ?>
 
-
-
-
-
-
-
 </body>

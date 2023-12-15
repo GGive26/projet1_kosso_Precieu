@@ -7,24 +7,24 @@ function usernameIsValid(string $user_name): array
         'msg' => ''
     ];
 
-    $userInDB = getUserBylname($user_name);
+    $userInDB = getUserByUsername($user_name);
 
     if (strlen($user_name) < 2) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom utilisé est trop court'
+            'msg' => 'Le userName utilisé est trop court'
 
         ];
     } elseif (strlen($user_name) > 20) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom utilisé est trop long'
+            'msg' => 'Le username utilisé est trop long'
 
         ];
     } elseif ($userInDB) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom est déjà utilisé'
+            'msg' => 'Le Username est déjà utilisé'
         ];
     }
     return $result;
@@ -70,19 +70,19 @@ function firstnameIsValid(string $fname): array
     if (strlen($fname) < 1) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom utilisé est trop court'
+            'msg' => 'Le prenom utilisé est trop court'
 
         ];
     } elseif (strlen($fname) > 30) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom utilisé est trop long'
+            'msg' => 'Le prenom utilisé est trop long'
 
         ];
     } elseif ($userInDB) {
         $result = [
             'isValid' => false,
-            'msg' => 'Le nom est déjà utilisé'
+            'msg' => 'Le prenom est déjà utilisé'
         ];
     }
     return $result;

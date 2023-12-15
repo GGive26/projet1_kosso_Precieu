@@ -274,3 +274,17 @@ function upUserId(string $id){
     }
 
 }
+function getAllClient()
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE role_id!=1");
+
+    $data = [];
+    $i = 0;
+    while ($rangeeData = mysqli_fetch_assoc($result)) {
+        $data[$i] = $rangeeData;
+        $i++;
+    };
+
+    return $data;
+}

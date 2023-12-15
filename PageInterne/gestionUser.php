@@ -13,11 +13,14 @@
 require_once '../functions/functions.php';
 require_once '../utils/connexion.php';
 session_start();
-$users=getAllUsers();
 if(isset($_SESSION['auth'])){
 $userconnected=getUserById($_SESSION['auth']['id']);
 $userbyName=getUserByUsername($userconnected['user_name']);
-        
+if($_SESSION['auth']['id']==1){
+$users=getAllUsers();   
+}else{
+    $users=getAllClient();
+}
   ?>
 <body class="acceuilAdmin">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -48,10 +51,11 @@ $userbyName=getUserByUsername($userconnected['user_name']);
      </ul>
  </div>
 </nav>
-    <h1>gestionUsers</h1>
+    <center><h1>Plateforme Gestion des Utulisateurs</h1></center>
 <form action="./editUsers.php" method="post" class="form">
-    <fieldset><legend>Gestion des Produits</legend>
-    <select name="user_name">
+    <fieldset><legend>Gestion des Utulisateurs</legend>
+    <label for="user_name">Nom de l'utulisateur suivie du Role : </label>
+    <select name="user_name" id="user_name">
         <?php
                 foreach($users as $user=> $name){
         ?>
@@ -66,7 +70,7 @@ $userbyName=getUserByUsername($userconnected['user_name']);
     
     </select>
     <?php if($_SESSION['auth']['role_id']==1){?>
-    <select name="role_id">
+    <select name="role_id" id="role">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -91,9 +95,9 @@ $userbyName=getUserByUsername($userconnected['user_name']);
     <form class="form" action="./deleteUsers.php" method="post">
 
     <fieldset>
-        <legend>Suppression des Users</legend>
-    <label for="user_name">le Nom du Users</label>
-    <input type="text" id="name" name="user_name"><br>
+        <legend>Suppression d'un Client</legend>
+    <label for="user_name">le Nom du Client: </label>
+    <input type="text" id="name" name="user_name"><br><br>
 
     <input type="submit" value="Supprimer">
 

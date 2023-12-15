@@ -37,7 +37,7 @@
      </ul>
  </div>
 </nav>
-    <center><h1>Acceuil des Produits</h1></center>
+    <center><h1>Plateforme de Gestion des Produits</h1></center>
 
     <form method="post" action="./ajoutProduit.php" class="form">
         <fieldset>
@@ -58,7 +58,7 @@
         <label for="images">Images</label>
         <input type="text" id="images" name="img_url" value="../styles/images/"><br>
         <p>les mangas sont : demonSlayer,naruto,kuroko,myheroacademia,kingdom, lesSimpson,jujutsukaisen et detectiveConan </p>
-        <p>veuillez a ne pas effacer les premiers lignes ,ajouter juste le nom du mangas souhaiter ensuite un (.jpg) a la fin</p>
+        <p>veuillez a ne pas effacer les premieres lignes ,ajouter juste le nom du mangas comme ecrit en dessous ensuite un (.jpg) a la fin</p>
 
     </div>
     <div>
