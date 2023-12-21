@@ -208,7 +208,6 @@ function afficherProduit()
         $data[$i] = $rangeeData;
         $i++;
     };
-
     return $data;
 }
 
@@ -287,4 +286,104 @@ function getAllClient()
     };
 
     return $data;
+}
+
+function getOrderById(int $id)
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM order_has_product  WHERE product_id = ".$id);
+
+    $data = mysqli_fetch_assoc($result);
+
+    return $data;
+}
+
+function createOrderProduct(array $data)
+{
+    global $conn;
+    
+    $query = "INSERT  INTO order_has_product VALUES ('".$data["order_id"]."',?,?,?);";
+
+$stmt = mysqli_prepare($conn, $query);
+
+    if ($stmt) {
+        
+        mysqli_stmt_bind_param(
+            $stmt,
+            "iii",
+            $data['product_id'],
+            $data['quantity'],
+            $data['price']
+        );
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
+    }
+}
+
+function getUserOrderById(int $id)
+{
+    global $conn;
+    $query = "SELECT * FROM user_order  WHERE user_order.user_id = '".$id."';";
+    $result = mysqli_query($conn,$query);
+    $data = mysqli_fetch_assoc($result);
+
+    return $data;
+}
+
+
+
+function createUserOrderProduct(array $data)
+{
+    global $conn;
+    
+    $query = "INSERT IGNORE INTO user_order VALUES (NULL,'',?,?,?);";
+
+$stmt = mysqli_prepare($conn, $query);
+
+    if ($stmt) {
+        
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sii",
+            $data['date'],
+            $data['total'],
+            $data['user_id']
+        );
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
+    }
+}
+
+function getProductById(int $id)
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM product  WHERE id = ".$id);
+
+    $data = mysqli_fetch_assoc($result);
+
+    return $data;
+}
+function createAdresse(array $data)
+{
+    global $conn;
+    
+    $query = "INSERT INTO address VALUES (NULL,?,?,?,?,?,?);";
+
+$stmt = mysqli_prepare($conn, $query);
+
+    if ($stmt) {
+        
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sissss",
+            $data['street_name'],
+            $data['street_nb'],
+            $data['city'],
+            $data['province'],
+            $data['zip_code'],
+            $data['country']
+        );
+
+        $result = mysqli_stmt_execute($stmt);
+    }
 }

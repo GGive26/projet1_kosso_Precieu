@@ -46,6 +46,44 @@
      </ul>
  </div>
 </nav>
-    <h1>Paniers</h1>
+            <center><h1>Veuillez Entrez votre Adresse et clicker sur achat afin de finaliser sur Paypal</h1></center>
+            
+            <form action="./End.php" method="post">
+   <fieldset>
+    <div class="container">
+    <div>
+        <label for="street_name">Nom de rue : </label>
+        <input id="street_name" type="text" name="street_name" >
+        
+    </div>
+    <div>
+        <label for="street_nb">Numero de Rue  : </label>
+        <input id="street_nb" type="text" name="street_nb" >
+        
+    </div>
+
+    <div>
+    <label for="city">City : </label>
+    <input id="city" type="text" name="city" >
+   
+    </div>
+    <div>
+    <label for="province">Province : </label>
+    <input id="province" type="text" name="province" >
+    
+    </div>
+    <div>
+    <label for="zip_code">Code Postal : </label>
+    <input id="zip_code" type="text" name="zip_code" >
+    </div>
+
+    <div>
+    <label for="country">Country : </label>
+    <input id="country" type="text" name="country"  ?>">
+    </div>
+    </div>
+        </fieldset>
+   <center> <input type="submit" value="Acheter"></center>
+  </form>    
 </body>
 </html>
