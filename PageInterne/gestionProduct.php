@@ -25,9 +25,7 @@
          <li class="nav-item">
              <a class="nav-link" href="profil.php">Profil</a>
          </li>
-         <li class="nav-item">
-             <a class="nav-link" href="panier.php">Paniers</a>
-         </li>
+
          <li class="nav-item">
              <a class="nav-link" href="gestionUser.php">gestionUsers</a>
          </li>

@@ -33,41 +33,40 @@ $mesProduits=afficherProduit();
          <li class="nav-item">
              <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
          </li>
-         <li class="nav-item">
-             <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
-         </li>
      </ul>
  </div>
 </nav>
 <center><h3>Bienvenue dans notre Site dedié aux Otakus</h3></center>
 
-    <div class="album py-5 bg-body-tertiary">
+<div class="album py-5 bg-body-tertiary">
     <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <?php  foreach($mesProduits as $produit){ ?>
-            <form method="post" action="./DetailsCommande.php" >
-    <div class="col">
-          <div class="card shadow-sm" style="width: 18rem;">
-          <input type="number" name="product_id" value="<?php echo intval($produit['id'])?>" readonly>  
-          <img src="<?php echo $produit["img_url"] ?>"  name="img_url" value="<?php echo $produit['name'] ?>" class="card-img-top" alt="...">
-            <text x="50%" y="50%" fill="#eceeef" dy=".3em" name="quantity" value="<?php echo $produit['quantity'] ?>"> <H3><?php echo $produit['quantity'] ?></H3></text>
-            <div class="card-body">
-            <p class="card-text"  name="name" value="<?php echo $produit['name'] ?>"><b><?php echo $produit["name"] ?></b> </p>
-              <p class="card-text"  name="description" value="<?php echo $produit['description'] ?>"><?php echo $produit["description"] ?> </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                <small class="text-body-secondary"><?php echo intval($produit["price"]) ?> $CAD</small>
-                <small ><label for="quantity">la quantite Souhaitez: </label>
-                <input type="number" name="quantity"  ></small>
-
+            <div class="col">
+              <div class="card shadow-sm" style="width: 18rem;">
+                <img src="<?php echo $produit["img_url"] ?>"  name="img_url" value="<?php echo $produit['name'] ?>" class="card-img-top" alt="...">
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em" name="quantity" value="<?php echo $produit['quantity'] ?>"> <H3><?php echo $produit['quantity'] ?></H3></text>
+                <div class="card-body">
+                  <p class="card-text"  name="name" value="<?php echo $produit['name'] ?>"><b><?php echo $produit["name"] ?></b> </p>
+                  <p class="card-text"  name="description" value="<?php echo $produit['description'] ?>"><?php echo $produit["description"] ?> </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <small class="text-body-secondary"  name="price" value="<?php echo $produit['price'] ?>"><?php echo $produit["price"] ?> $CAD</small><br>
+                      <form method="post" action="./DetailsCommande.php" >
+                  <label for="quantity"> la quantite : </label>
+                  <input type="number" name="quantity" value="">
+                  <?php
+                  ?>
+                  <input type="number" name="product_id" value="<?php echo intval($produit['id']) ?>" hidden> 
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">acheter</button> -->
+                  <button type="submit" class="btn btn-primary">Acheter</button>
+                </form>
+                </div>
                 <?php
                 
                 $_SESSION["product_id"]=$produit["id"];
-                
+                $_SESSION["price"]=$produit["price"];
                 ?>
-                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">acheter</button> -->
-                  <a href="#" class="card-link"><button type="submit" class="btn btn-primary">Acheter</button></a>
-                </div>
               </div>
             </div>
           </div>
@@ -76,6 +75,6 @@ $mesProduits=afficherProduit();
     </div>
     </div>
 </div>
-  </form>
+
 </body>
 </html>

@@ -302,7 +302,7 @@ function createOrderProduct(array $data)
 {
     global $conn;
     
-    $query = "INSERT  INTO order_has_product VALUES ('".$data["order_id"]."',?,?,?);";
+    $query = "INSERT IGNORE INTO order_has_product VALUES ('".$data["order_id"]."',?,?,?);";
 
 $stmt = mysqli_prepare($conn, $query);
 

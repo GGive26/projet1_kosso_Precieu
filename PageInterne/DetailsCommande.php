@@ -17,7 +17,7 @@ $data1=[
     'total'=>$priceT,
     'user_id'=>$id_client
 ];
-//$monAchatUser=createUserOrderProduct($data1);
+$monAchatUser=createUserOrderProduct($data1);
 $recIdUserProduct=getUserOrderById($id_client);
 var_dump($recIdUserProduct["id"]);
 
@@ -65,9 +65,6 @@ $monPanier=createOrderProduct($data);
          </li>
          <li class="nav-item">
              <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
-         </li>
-         <li class="nav-item">
-             <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
          </li>
          <li class="nav-item">
              <a class="nav-link" href="gestionUser.php">gestionUsers</a>

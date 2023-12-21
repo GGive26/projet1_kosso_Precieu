@@ -33,14 +33,12 @@ $mesProduits=afficherProduit();
          <li class="nav-item">
              <a class="nav-link" href="../PageInterne/profil.php">Profil</a>
          </li>
-         <li class="nav-item">
-             <a class="nav-link" href="../PageInterne/panier.php">Paniers</a>
-         </li>
+
      </ul>
  </div>
 </nav>
 
-        <center><h1>Vous avez Completer les etapes essentielle Finaliser le Paiement en clickant sur le boutton en dessous </h1></center>
+        <center><h4>Vous avez Completer les etapes essentielle Finaliser le Paiement en clickant sur le boutton en dessous </h4></center>
 
     <?php
     $data=[
