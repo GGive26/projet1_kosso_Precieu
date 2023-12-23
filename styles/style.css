@@ -1,6 +1,10 @@
 .index {
   background-image: url("./images/creation-site-e-commerce.jpeg");
 }
+#endP {
+  background-image: url("https://wallpapers.com/images/hd/paypal-neon-light-sign-sd5ymrzpk7rxt53g.jpg");
+  text-align: center;
+}
 .form {
   text-align: center;
   background-color: beige;
