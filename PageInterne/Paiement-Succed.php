@@ -1,5 +1,6 @@
 <?php
 session_start();
+//Page d'affichage d'un Paiement Reussi
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,14 +1,15 @@
 <?php
+//creation d'un client
 function createUser(array $data)
 {
     global $conn;
-    
+
     $query = "INSERT INTO user VALUES (NULL,?,?,?,?,?,0,0,'',3);";
 
-$stmt = mysqli_prepare($conn, $query);
+    $stmt = mysqli_prepare($conn, $query);
 
     if ($stmt) {
-        
+
         mysqli_stmt_bind_param(
             $stmt,
             "sssss",
@@ -23,6 +24,7 @@ $stmt = mysqli_prepare($conn, $query);
     }
 }
 
+//recuperation des utulisateurs 
 function getAllUsers()
 {
     global $conn;
@@ -38,16 +40,18 @@ function getAllUsers()
     return $data;
 }
 
+//recuperation d'un user avec son id
 function getUserById(int $id)
 {
     global $conn;
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE id = ".$id);
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE id = " . $id);
 
     $data = mysqli_fetch_assoc($result);
 
     return $data;
 }
 
+//recuperation d'un user avec son userName
 function getUserByUsername(string $user_name)
 {
     global $conn;
@@ -59,6 +63,7 @@ function getUserByUsername(string $user_name)
     $data = mysqli_fetch_assoc($result);
     return $data;
 }
+//recuperation d'un user avec son last Name
 function getUserBylname(string $lname)
 {
     global $conn;
@@ -71,6 +76,7 @@ function getUserBylname(string $lname)
     $data = mysqli_fetch_assoc($result);
     return $data;
 }
+//recuperation d'un user avec son First Name
 function getUserByfname(string $fname)
 {
     global $conn;
@@ -84,14 +90,14 @@ function getUserByfname(string $fname)
     return $data;
 }
 
-
+//mofification d'un user 
 function updateUser(array $data)
 {
     global $conn;
-    
+
     $query = "UPDATE user SET  email = ?,lname = ?, fname = ? WHERE user.id = ?;";
 
-$stmt = mysqli_prepare($conn, $query);
+    $stmt = mysqli_prepare($conn, $query);
 
 
     if ($stmt) {
@@ -111,6 +117,7 @@ $stmt = mysqli_prepare($conn, $query);
     }
 }
 
+//suppresion d'un user
 function deleteUser(int $id)
 {
     global $conn;
@@ -126,12 +133,13 @@ function deleteUser(int $id)
             $id,
         );
 
-        
+
         $result = mysqli_stmt_execute($stmt);
         return $result;
     }
 }
 
+//modification du token
 function updateToken(array $data)
 {
     global $conn;
@@ -148,22 +156,23 @@ function updateToken(array $data)
             $data['user_name']
         );
 
-        
+
         $result = mysqli_stmt_execute($stmt);
     }
 }
 
+//creation d'un produit
 function createProduct(array $data)
 {
     global $conn;
-    
+
     $query = "INSERT INTO product VALUES (NULL,?,?,?,?,?);";
 
-$stmt = mysqli_prepare($conn, $query);
-var_dump($stmt);
+    $stmt = mysqli_prepare($conn, $query);
+    var_dump($stmt);
 
     if ($stmt) {
-        
+
         mysqli_stmt_bind_param(
             $stmt,
             "siiss",
@@ -174,29 +183,31 @@ var_dump($stmt);
             $data['description'],
         );
 
-       
+
         $result = mysqli_stmt_execute($stmt);
         return $result;
     }
 }
 
+//recuperation d'un produit
 function getProduct(string $name)
 {
     global $conn;
     $query = "SELECT * FROM product WHERE product.name = ?;";
     $stmt = mysqli_prepare($conn, $query);
 
-    if ($stmt) {       
+    if ($stmt) {
         mysqli_stmt_bind_param(
             $stmt,
             "s",
-            $name        
-        );      
+            $name
+        );
         $result = mysqli_stmt_execute($stmt);
         return $result;
     }
 }
 
+//fonction d'afficahge des produits 
 function afficherProduit()
 {
     global $conn;
@@ -210,7 +221,7 @@ function afficherProduit()
     };
     return $data;
 }
-
+//changemnt du role_id
 function updateRoleId(array $data)
 {
     global $conn;
@@ -227,12 +238,13 @@ function updateRoleId(array $data)
             $data['user_name']
         );
 
-        
+
         $result = mysqli_stmt_execute($stmt);
         return $result;
     }
 }
 
+//suppression d'un produit
 function deleteProduct(string $name)
 {
     global $conn;
@@ -253,10 +265,12 @@ function deleteProduct(string $name)
     }
 }
 
-function upUserId(string $id){
+//permet de relier le billing et shipping address a l'id du client
+function upUserId(string $id)
+{
     global $conn;
 
-    $query = "UPDATE user SET billing_address_id='".$id."',shipping_address_id='".$id."'
+    $query = "UPDATE user SET billing_address_id='" . $id . "',shipping_address_id='" . $id . "'
             WHERE user.id = ?;";
 
     if ($stmt = mysqli_prepare($conn, $query)) {
@@ -267,12 +281,13 @@ function upUserId(string $id){
             $id
         );
 
-        
+
         $result = mysqli_stmt_execute($stmt);
         return $result;
     }
-
 }
+
+//recupere tout mes clients 
 function getAllClient()
 {
     global $conn;
@@ -288,26 +303,28 @@ function getAllClient()
     return $data;
 }
 
+//recupere les details de la  commande grace a l'id
 function getOrderById(int $id)
 {
     global $conn;
-    $result = mysqli_query($conn, "SELECT * FROM order_has_product  WHERE product_id = ".$id);
+    $result = mysqli_query($conn, "SELECT * FROM order_has_product  WHERE product_id = " . $id);
 
     $data = mysqli_fetch_assoc($result);
 
     return $data;
 }
 
+//creation d'un  details de produit
 function createOrderProduct(array $data)
 {
     global $conn;
-    
-    $query = "INSERT IGNORE INTO order_has_product VALUES ('".$data["order_id"]."',?,?,?);";
 
-$stmt = mysqli_prepare($conn, $query);
+    $query = "INSERT IGNORE INTO order_has_product VALUES ('" . $data["order_id"] . "',?,?,?);";
+
+    $stmt = mysqli_prepare($conn, $query);
 
     if ($stmt) {
-        
+
         mysqli_stmt_bind_param(
             $stmt,
             "iii",
@@ -320,28 +337,29 @@ $stmt = mysqli_prepare($conn, $query);
     }
 }
 
+//recupere la commande avec l'id
 function getUserOrderById(int $id)
 {
     global $conn;
-    $query = "SELECT * FROM user_order  WHERE user_order.user_id = '".$id."';";
-    $result = mysqli_query($conn,$query);
+    $query = "SELECT * FROM user_order  WHERE user_order.user_id = '" . $id . "';";
+    $result = mysqli_query($conn, $query);
     $data = mysqli_fetch_assoc($result);
 
     return $data;
 }
 
 
-
+// creation d'une commande
 function createUserOrderProduct(array $data)
 {
     global $conn;
-    
+
     $query = "INSERT IGNORE INTO user_order VALUES (NULL,'',?,?,?);";
 
-$stmt = mysqli_prepare($conn, $query);
+    $stmt = mysqli_prepare($conn, $query);
 
     if ($stmt) {
-        
+
         mysqli_stmt_bind_param(
             $stmt,
             "sii",
@@ -354,25 +372,28 @@ $stmt = mysqli_prepare($conn, $query);
     }
 }
 
+//recupere le produit grace a l'id
 function getProductById(int $id)
 {
     global $conn;
-    $result = mysqli_query($conn, "SELECT * FROM product  WHERE id = ".$id);
+    $result = mysqli_query($conn, "SELECT * FROM product  WHERE id = " . $id);
 
     $data = mysqli_fetch_assoc($result);
 
     return $data;
 }
+
+//creer une addresse
 function createAdresse(array $data)
 {
     global $conn;
-    
+
     $query = "INSERT INTO address VALUES (NULL,?,?,?,?,?,?);";
 
-$stmt = mysqli_prepare($conn, $query);
+    $stmt = mysqli_prepare($conn, $query);
 
     if ($stmt) {
-        
+
         mysqli_stmt_bind_param(
             $stmt,
             "sissss",

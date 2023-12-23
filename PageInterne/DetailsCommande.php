@@ -1,5 +1,6 @@
 <?php
 session_start();
+//page d'afichage des details de la Commande
 require_once '../functions/userCrud.php';
 require_once '../functions/functions.php';
 require_once '../utils/connexion.php';
@@ -12,12 +13,14 @@ $quantity = intval($_POST["quantity"]);
 
 $priceT = intval($price * $quantity);
 
+//recuperation de l'id du client fesant la commande 
 $id_client = intval($_SESSION["auth"]["id"]);
 $data1 = [
     'date' => date('Y-m-d H:i:s'),
     'total' => $priceT,
     'user_id' => $id_client
 ];
+//creation de la comande 
 $monAchatUser = createUserOrderProduct($data1);
 $recIdUserProduct = getUserOrderById($id_client);
 
@@ -27,6 +30,7 @@ $data = [
     'quantity' => $_POST["quantity"],
     'price' => $priceT
 ];
+//creation des details de la commande
 $monPanier = createOrderProduct($data);
 ?>
 <!DOCTYPE html>

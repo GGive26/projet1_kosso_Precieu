@@ -1,5 +1,8 @@
 <?php
+//page d'acceuil Client
+//mise en route de la session 
 session_start();
+//appel a d'autre fichier 
 require_once '../functions/userCrud.php';
 require_once '../functions/functions.php';
 require_once '../utils/connexion.php';

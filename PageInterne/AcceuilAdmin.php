@@ -1,5 +1,8 @@
 <?php
+//page d'acceuil Administrateur
+//mise en route de la session 
 session_start();
+//appel a d'autre fichier 
 require_once '../functions/userCrud.php';
 require_once '../functions/functions.php';
 require_once '../utils/connexion.php';
@@ -44,7 +47,9 @@ $mesProduits = afficherProduit();
   <center>
     <h3>Bienvenue dans notre Site dedié aux Otakus</h3>
   </center>
-
+  <?php
+  //Affichage des produits 
+  ?>
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

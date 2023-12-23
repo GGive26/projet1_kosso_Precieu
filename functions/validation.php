@@ -1,12 +1,13 @@
 <?php
 
+//verifis si le username est valide 
 function usernameIsValid(string $user_name): array
 {
     $result = [
         'isValid' => true,
         'msg' => ''
     ];
-
+    //recupere le username dans le db
     $userInDB = getUserByUsername($user_name);
 
     if (strlen($user_name) < 2) {
@@ -29,6 +30,7 @@ function usernameIsValid(string $user_name): array
     }
     return $result;
 }
+//verifie si le last name est valide 
 function lastnameIsValid(string $lname): array
 {
     $result = [
@@ -58,6 +60,7 @@ function lastnameIsValid(string $lname): array
     }
     return $result;
 }
+//verifie si le first name est valide 
 function firstnameIsValid(string $fname): array
 {
     $result = [
@@ -87,6 +90,8 @@ function firstnameIsValid(string $fname): array
     }
     return $result;
 }
+
+//verification de l'email
 function emailIsValid($email)
 {
 
@@ -103,6 +108,7 @@ function emailIsValid($email)
     ];
 }
 
+//verification du password 
 function pwdLenghtValidation($pwd)
 {
     //minimum 6 max 16
@@ -124,6 +130,3 @@ function pwdLenghtValidation($pwd)
         'msg' => ''
     ];
 }
-
-
-?>

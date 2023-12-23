@@ -51,7 +51,9 @@ $mesProduits = afficherProduit();
         'zip_code' => $_POST["zip_code"],
         'country' => $_POST["country"],
     ];
+    //creation de l'addresse 
     createAdresse($data);
+    //creation d'un boutton envoyant vers un fake-Paypal
     ?>
     <center><a href="Paiement-Succed.php"><button>Paypal</button></a></center>
 </body>
